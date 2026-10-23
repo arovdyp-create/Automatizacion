@@ -15,9 +15,22 @@ public class LoginDefinition {
     private LoginPage loginPage = new LoginPage();
 
     @And("ingresar el usuario {string}")
-    public void ingresarElUsuario(String nombreUsuario) {
-
-        loginPage.escribirUsersname(nombreUsuario);
+    public void ingresarUsuario(String usuario) {
+        loginPage.escribirNombreUsuario(usuario);
     }
 
+    @And("ingresar la clave {string}")
+    public void ingresarClave(String clave) {
+        loginPage.escribirClave(clave);
+    }
+
+    @When("presiono el boton Submit")
+    public void clickBotonSubmit() {
+        loginPage.clickBtnSubmit();
+    }
+
+    @Then("se valida el mensaje Logged In Successfully")
+    public void validarMensaje() {
+        loginPage.validarIngresoOk();
+    }
 }

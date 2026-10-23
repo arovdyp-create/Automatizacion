@@ -15,18 +15,15 @@ java{
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
     // Selenium
     implementation 'org.seleniumhq.selenium:selenium-java:4.30.0'
     //implementation 'io.github.bonigarcia:webdrivermanager:5.8.1'
+
     // Cucumber
     implementation 'io.cucumber:cucumber-java:7.14.0'
     implementation 'io.cucumber:cucumber-junit:7.14.0'
 
-    // JUnit
+    // JUnit 4
     testImplementation 'junit:junit:4.13.2'
 
     //IA
@@ -35,5 +32,6 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnit()
+    failOnNoDiscoveredTests = false
 }
