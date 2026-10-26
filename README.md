@@ -1,2 +1,2 @@
-# Automatizaci-n
+# Automatizacion
 Capacitación Gherkin Selenium
