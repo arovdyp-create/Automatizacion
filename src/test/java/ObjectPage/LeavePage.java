@@ -249,7 +249,6 @@ public class LeavePage extends BaseController {
                 .orElseThrow(() -> new AssertionError(
                         "No se encontró la subunidad: " + unidad));
         opcion.click();
-
         wait.until(driver -> driver.findElement(SELECTOR_SUB_UNIDAD)
                 .findElement(By.cssSelector(".oxd-select-text-input"))
                 .getText().trim().equals(unidad));
@@ -260,7 +259,6 @@ public class LeavePage extends BaseController {
             throw new IllegalArgumentException(
                     "El valor de Include Past Employees debe ser Yes o No: " + anteriores);
         }
-
         boolean incluirAnteriores = "Yes".equalsIgnoreCase(anteriores);
         WebDriverWait wait = new WebDriverWait(DriverContext.getDriver(), Duration.ofSeconds(10));
         WebElement checkbox = wait.until(
@@ -270,7 +268,6 @@ public class LeavePage extends BaseController {
                     ExpectedConditions.elementToBeClickable(TOGGLE_INCLUDE_PAST_EMPLOYEES));
             toggle.click();
         }
-
         wait.until(driver -> driver.findElement(CHECK_INCLUDE_PAST_EMPLOYEES).isSelected()
                 == incluirAnteriores);
     }
@@ -288,7 +285,6 @@ public class LeavePage extends BaseController {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(cuerpoGrilla));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(indicadorCarga));
-
         List<WebElement> filas = DriverContext.getDriver().findElements(filasResultado).stream()
                 .filter(WebElement::isDisplayed)
                 .toList();
@@ -296,7 +292,6 @@ public class LeavePage extends BaseController {
             System.out.println("La búsqueda devolvió " + filas.size() + " solicitud(es).");
             return;
         }
-
         boolean sinResultados = DriverContext.getDriver().findElements(mensajeSinResultados).stream()
                 .anyMatch(WebElement::isDisplayed);
         Assert.assertTrue(
