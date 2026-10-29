@@ -82,7 +82,7 @@ public class LeaveDefinition {
         leavePage.seleccionarNombre(empleadoSeleccionado);
     }
     @And("se debe mostrar la validacion {string} si no existe empleado {string}")
-    public void validarNombreEmpleado(String mensaje, String empleado) {
+    public void validarNombre(String mensaje, String empleado) {
         if (!"Invalid".equals(mensaje)) {
             throw new IllegalArgumentException("La validacion esperada debe ser Invalid: " + mensaje);
         }
@@ -115,8 +115,7 @@ public class LeaveDefinition {
         leavePage.validarTablaResultados();
     }
 
-    /*
-    @And("las solicitudes deben corresponder al empleado {string}")
+    /*@And("las solicitudes deben corresponder al empleado {string}")
 
     @And("las solicitudes deben cumplir el estado {string}")
 

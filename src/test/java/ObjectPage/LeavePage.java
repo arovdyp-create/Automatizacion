@@ -228,10 +228,6 @@ public class LeavePage extends BaseController {
         return texto == null ? "" : texto.replaceAll("\\s+", " ").trim().toLowerCase(Locale.ROOT);
     }
 
-    public void validarNombreEmpleadoInvalido(String nombreEmpleado) {
-
-    }
-
     public void subUnidad(String unidad) {
         WebDriverWait wait = new WebDriverWait(DriverContext.getDriver(), Duration.ofSeconds(10));
         WebElement selector = wait.until(
