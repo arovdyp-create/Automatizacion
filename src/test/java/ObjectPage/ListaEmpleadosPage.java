@@ -25,7 +25,7 @@ public class ListaEmpleadosPage extends BaseController {
             if (visualizarElemento(this.nombreUsuario, 10)) {
                 this.nombreUsuario.clear();
                 this.nombreUsuario.sendKeys(usuario);
-            } else {
+            } else{
                 throw new AssertionError("No se encuentra el campo Nombre de Usuario en la página");
             }
         } catch (Exception e) {

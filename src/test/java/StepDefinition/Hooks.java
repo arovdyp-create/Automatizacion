@@ -24,11 +24,14 @@ public class Hooks {
         this.scenario = scenario;
         Constant.scenarioStep = scenario;
         Constant.build_name = "Nombre de Proyecto";
+        DriverContext.setDetachBrowser(scenario.getSourceTagNames().contains("@SODIMAC"));
     }
 
     @After
     public void tearDown(){
-        DriverContext.quitDriver();
+        if (!scenario.getSourceTagNames().contains("@SODIMAC")) {
+            DriverContext.quitDriver();
+        }
     }
 
     public void generarEvidencia(String imageRefName){

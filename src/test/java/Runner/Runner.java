@@ -8,11 +8,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/Leave.feature",
+        features = "src/test/resources/features/Sodimac.feature",
         glue = {"StepDefinition"},
         plugin = {"pretty", "html:target/cucumber-report.html"},
         monochrome = true,
-        tags = "@LEAVE")
+        tags = "@SODIMAC")
 
 
 public class Runner {

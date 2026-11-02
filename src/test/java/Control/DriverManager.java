@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class DriverManager {
     private WebDriver driver;
+    private boolean detachBrowser;
 
     private final DesiredCapabilities ConfiguracionesNav = new DesiredCapabilities();
 
@@ -26,6 +27,7 @@ public class DriverManager {
                 System.out.println("Chrome seleccionado");
                 ChromeOptions configuracionChrome = new ChromeOptions();
                 configuracionChrome.setBrowserVersion(System.getProperty("chrome.version", "155"));
+                configuracionChrome.setExperimentalOption("detach", detachBrowser);
                 if(os.contains("linux")){
                     System.out.println(System.getProperty("user.name"));
                     configuracionChrome.addArguments("--disable-dev-shm-usage");
@@ -55,6 +57,10 @@ public class DriverManager {
         }else{
             return driver;
         }
+    }
+
+    protected synchronized void setDetachBrowser(boolean detachBrowser) {
+        this.detachBrowser = detachBrowser;
     }
 
     protected synchronized void quitDriver() {

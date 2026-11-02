@@ -25,6 +25,10 @@ public class DriverContext {
         return driverManager.getDriver();
     }
 
+    public static void setDetachBrowser(boolean detachBrowser) {
+        driverManager.setDetachBrowser(detachBrowser);
+    }
+
     public static void quitDriver(){
         if (driverManager != null) {
             driverManager.quitDriver();
