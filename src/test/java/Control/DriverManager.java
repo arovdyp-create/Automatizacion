@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.WebDriverException;
 
 import java.util.Map;
 
@@ -14,7 +15,8 @@ public class DriverManager {
 
     private final DesiredCapabilities ConfiguracionesNav = new DesiredCapabilities();
 
-    protected void resolverDriver(Navegador nav, String url){
+    protected synchronized void resolverDriver(Navegador nav, String url){
+        quitDriver();
         String os = System.getProperty("os.name").toLowerCase();
         String osVersion = System.getProperty("os.version").toLowerCase();
         System.out.println("\nSistema Operativo :" + os+", "+osVersion);
@@ -23,6 +25,7 @@ public class DriverManager {
             case Chrome:
                 System.out.println("Chrome seleccionado");
                 ChromeOptions configuracionChrome = new ChromeOptions();
+                configuracionChrome.setBrowserVersion(System.getProperty("chrome.version", "155"));
                 if(os.contains("linux")){
                     System.out.println(System.getProperty("user.name"));
                     configuracionChrome.addArguments("--disable-dev-shm-usage");
@@ -46,11 +49,24 @@ public class DriverManager {
         driver.get(url);
     }
 
-    protected WebDriver getDriver(){
+    protected synchronized WebDriver getDriver(){
         if(driver == null){
             return null;
         }else{
             return driver;
+        }
+    }
+
+    protected synchronized void quitDriver() {
+        WebDriver currentDriver = driver;
+        driver = null;
+        if (currentDriver == null) {
+            return;
+        }
+        try {
+            currentDriver.quit();
+        } catch (WebDriverException e) {
+            System.err.println("No se pudo cerrar Chrome limpiamente: " + e.getMessage());
         }
     }
 }

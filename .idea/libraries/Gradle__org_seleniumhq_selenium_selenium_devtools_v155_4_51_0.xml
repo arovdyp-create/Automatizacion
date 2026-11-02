@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.seleniumhq.selenium:selenium-devtools-v155:4.51.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.seleniumhq.selenium" artifactId="selenium-devtools-v155" version="4.51.0" baseVersion="4.51.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../gradle-9.5.1/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v155/4.51.0/4ea5dd65bb046f48d863b3dfa25191431ed9ce4b/selenium-devtools-v155-4.51.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../gradle-9.5.1/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v155/4.51.0/9a4191d07301c54e4963352f5ae924e5f7ce5cf1/selenium-devtools-v155-4.51.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

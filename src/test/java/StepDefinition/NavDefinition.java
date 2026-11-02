@@ -8,7 +8,7 @@ import org.junit.Assert;
 
 public class NavDefinition {
 
-    @Given("abrir el navegador en la url {string}")
+    @Given("que se abre el navegador y se navega a {string}")
     public void abrirNavegador(String url) throws InterruptedException {
 
         String nav = System.getProperty("nav", "default");

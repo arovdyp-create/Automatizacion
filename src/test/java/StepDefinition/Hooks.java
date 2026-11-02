@@ -8,6 +8,8 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 
 public class Hooks {
     private Scenario scenario;
@@ -30,8 +32,18 @@ public class Hooks {
     }
 
     public void generarEvidencia(String imageRefName){
-        byte[] screenShot = ((TakesScreenshot) DriverContext.getDriver()).getScreenshotAs(OutputType.BYTES);
-        this.scenario.attach(screenShot,"image/png", imageRefName);
+        WebDriver driver = DriverContext.getDriver();
+        if (driver == null) {
+            this.scenario.log("No se adjuntó captura: el WebDriver ya no está disponible.");
+            return;
+        }
+        try {
+            byte[] screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            this.scenario.attach(screenShot,"image/png", imageRefName);
+        } catch (WebDriverException e) {
+            this.scenario.log("No se pudo adjuntar la captura porque Chrome perdió la sesión: "
+                    + e.getMessage());
+        }
     }
 
     @AfterStep

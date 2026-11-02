@@ -26,8 +26,8 @@ public class DriverContext {
     }
 
     public static void quitDriver(){
-        if(driverManager!=null){
-            driverManager.getDriver().quit();
+        if (driverManager != null) {
+            driverManager.quitDriver();
         }
     }
 }
